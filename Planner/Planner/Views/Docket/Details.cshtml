@@ -1,0 +1,65 @@
+﻿@model Planner.Models.Docket
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+@foreach (var m in Model.Activities)
+{<p>@m.Title</p>}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+
+@using Newtonsoft.Json;
+@{
+
+    var latList = new List<double>();
+    var lngList = new List<double>();
+    foreach (var Activity in Model.Activities)
+    {
+      
+       
+            latList.Add(Activity.Lat);
+            lngList.Add(Activity.Lng);
+        
+
+    }
+
+
+}
+<div id="map"></div>
+
+<script>
+
+    var lats = @Html.Raw(JsonConvert.SerializeObject(latList, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            }));
+    var lngs =@Html.Raw(JsonConvert.SerializeObject(lngList, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            }));
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: { lat: 41.918767, lng: -87.68641}
+        });
+
+
+        for (let i = 0; i < lats.length && i < lngs.length; i++) {
+
+            let marker = new google.maps.Marker({ position: new google.maps.LatLng(lats[i], lngs[i]), map: map })
+
+        }
+
+    }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6CHq9jOA1p1l-8oORbFV9HJPptDezg2s&callback=initMap"
+        async defer></script>

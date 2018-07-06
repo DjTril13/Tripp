@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Planner.Models.Docket>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (Request.IsAuthenticated)
+{
+
+    foreach (var m in Model)
+    {
+        <h1>
+            @Html.ActionLink(m.Title, "Details", "Docket", new { id = m.Id }, new { @class = "btn btn-default" })
+        </h1>
+        foreach (var a in m.Activities)
+        {
+            <p>@a.Title</p>
+        }
+
+    }
+    
+}
+            else {
+<div class="jumbotron">
+    <h1>Tripp</h1>
+    <p class="lead">Welcome to Tripp. Where everone has a good trip.</p>
+    <p><a href="http://localhost:15036/Account/Register" class="btn btn-primary btn-lg">Create Account &raquo;</a></p>
+</div>
+}
