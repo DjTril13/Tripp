@@ -6,6 +6,10 @@
 @if (Request.IsAuthenticated)
 {
 
+    //Adding button to let you add to docket
+    <input type="button" value="Add Item to Docekt" onclick="location.href='@Url.Action("Create", "Docket")'" />
+
+
     foreach (var m in Model)
     {
         <h1>

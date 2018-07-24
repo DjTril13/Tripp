@@ -31,8 +31,16 @@ namespace Planner.Controllers
             ViewBag.Title = "Activities List";
             return View(Docket);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+
+        }
+
     }
-        //public ActionResult Details() { }// single docket when you click it from home page
-    }
+}
+      
+    
 
 
