@@ -23,6 +23,7 @@ namespace Planner.Controllers
         public ActionResult Details(int Id)
         {
             Docket Docket = _context.Docket
+          
              .Include(d => d.Activities)
              .Where(d => d.Id == Id)
              .SingleOrDefault();
@@ -31,11 +32,20 @@ namespace Planner.Controllers
             ViewBag.Title = "Activities List";
             return View(Docket);
         }
-
-        public ActionResult Create()
+        
+        public ActionResult Add()
         {
             return View();
+        }
+        public ActionResult Create(string Title)
+        {
+            Docket Docket = new Docket();
+            Docket.Title = Title;
+            _context.Docket.Add(Docket);
+            _context.SaveChanges();
+            return View("Index");
 
+            
         }
 
     }
