@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Planner.Models
 {
-    public class Activites
+    public class Activities
     {
         public int Id { get; set; }
         public string Title { get; set; }

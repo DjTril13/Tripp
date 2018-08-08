@@ -43,9 +43,8 @@ namespace Planner.Controllers
             Docket.Title = Title;
             _context.Docket.Add(Docket);
             _context.SaveChanges();
-            return View("Index");
-
-            
+            Details(Docket.Id);
+            return View("Details");    // pass thru the ID?
         }
 
     }

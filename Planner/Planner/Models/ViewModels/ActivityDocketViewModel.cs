@@ -9,11 +9,11 @@ namespace Planner.Models.ViewModels
     public class ActivityDocketViewModel
     {
         public Docket Docket { get; set; }
-        public Activites Activities { get; set; }
-        public List<Activites> ActivitiesList { get; set; }
+        public Activities Activities { get; set; }
+        public List<Activities> ActivitiesList { get; set; }
 
         [Required]
         [Display(Name = "New Activity")]
-        public Activites NewActivity = new Activites();
+        public Activities NewActivity = new Activities();
 }
 }

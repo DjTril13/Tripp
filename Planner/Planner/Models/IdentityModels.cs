@@ -22,7 +22,7 @@ namespace Planner.Models
     {
 
         public DbSet<Docket> Docket { get; set; }
-        public DbSet<Activites> Activities { get; set; }
+        public DbSet<Activities> Activities { get; set; }
         public DbSet<Budget> Budget { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

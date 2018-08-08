@@ -10,7 +10,7 @@ namespace Planner.Models
         
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<Activites> Activities { get; set; }
+        public List<Activities> Activities { get; set; }
 
     }
 }

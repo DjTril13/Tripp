@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ <input type="button" value="Add Activity to Docket Item" onclick="location.href='@Url.Action("Add", "Activity")'" /> //this add is reffering to the ADD controller in docket, not the view. 
+    }
+
 <h2>@Model.Title</h2>
 @foreach (var m in Model.Activities)
 {<p>@m.Title</p>}
