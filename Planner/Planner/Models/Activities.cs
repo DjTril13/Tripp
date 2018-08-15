@@ -11,7 +11,8 @@ namespace Planner.Models
         public string Title { get; set; }
         public double Lat { get; set; }
         public double Lng { get; set; }
-
+        public int DocketId { get; set; }
+        public Docket Docket { get; set; }
 
     }
 }

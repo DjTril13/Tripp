@@ -1,29 +1,26 @@
 ﻿@model IEnumerable<Planner.Models.Docket>
-
 @{
     ViewBag.Title = "Home Page";
 }
 @if (Request.IsAuthenticated)
 {
+        <input type="button" value="View & Manage Your Budgets" onclick="location.href='@Url.Action("Index", "Budgets")'" />
+         <input type="button" value="And an Item to your Docket" onclick="location.href='@Url.Action("Add", "Docket")'" />
+        <input type="button" value="View and Manage your Travel Plans" onclick="location.href='@Url.Action("Index", "Travel")'" />
+        <input type="button" value="See your Past Experiences" onclick="location.href='@Url.Action("Index", "MyExperiences")'" />
 
-    //Adding button to let you add to docket
-    <input type="button" value="Add Item to Docket" onclick="location.href='@Url.Action("Add", "Docket")'" />
 
 
-    foreach (var m in Model)
+    foreach (var d in Model)
     {
         <h1>
-            @Html.ActionLink(m.Title, "Details", "Docket", new { id = m.Id }, new { @class = "btn btn-default" })
+            @Html.ActionLink(d.Title, "Details", "Docket", new { id = d.Id }, new { @class = "btn btn-default" })
         </h1>
-        foreach (var a in m.Activities)
-        {
-            <p>@a.Title</p>
-        }
-
     }
-    
 }
-            else {
+   
+   else {
+
 <div class="jumbotron">
     <h1>Tripp</h1>
     <p class="lead">Welcome to Tripp. Where everone has a good trip.</p>

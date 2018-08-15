@@ -5,12 +5,11 @@ using System.Web;
 
 namespace Planner.Models
 {
-    public class Budget
+    public class Image
     {
         public int Id { get; set; }
-        public string Categories { get; set; }
-        public double Amount {get; set;}
-        public bool Exists { get; set; }
-        
+        public string ImageFilePath { get; set; }
+        public int ActivitiesId { get; set; }
+        public string Caption { get; set; }
     }
 }

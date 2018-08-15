@@ -7,6 +7,8 @@ using System.Data.Entity;
 using Planner.Models;
 
 
+
+
 namespace Planner.Controllers
 {
     public class HomeController : Controller
@@ -20,14 +22,14 @@ namespace Planner.Controllers
 
         public ActionResult Index()
         {
+           
+            List<Docket> DocketList = new List <Docket>();
+            DocketList = _context.Docket
+                
+                
+               .ToList();
 
-            IEnumerable<Docket> Dockets = _context.Docket
-           .Include(d => d.Activities)
-           .ToList();
-
-
-            ViewBag.Title = "Activities List";
-            return View(Dockets);
+            return View(DocketList);
         }
          
         

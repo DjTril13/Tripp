@@ -7,13 +7,13 @@ namespace Planner.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SeedMoreDockets : IMigrationMetadata
+    public sealed partial class Rebuild : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedMoreDockets));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Rebuild));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807022130349_SeedMoreDockets"; }
+            get { return "201808151705302_Rebuild"; }
         }
         
         string IMigrationMetadata.Source

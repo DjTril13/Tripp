@@ -24,6 +24,9 @@ namespace Planner.Models
         public DbSet<Docket> Docket { get; set; }
         public DbSet<Activities> Activities { get; set; }
         public DbSet<Budget> Budget { get; set; }
+        public DbSet<Image> Image { get; set; }
+        public DbSet<Travel> Travel { get; set; }
+        public DbSet<MyExperiences> MyExperiences { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

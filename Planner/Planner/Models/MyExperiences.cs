@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Planner.Models
 {
-    public class Budget
+    public class MyExperiences
     {
         public int Id { get; set; }
-        public string Categories { get; set; }
-        public double Amount {get; set;}
-        public bool Exists { get; set; }
+        public int ActivitiesId { get; set; }
+        public List<Image> MyImages { get; set; }
         
+        public string Comments { get; set; }
     }
 }

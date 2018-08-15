@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ <input type="button" value="Add Activity to Docket Item" onclick="location.href='@Url.Action("Add", "Activity")'" /> //this add is reffering to the ADD controller in docket, not the view. 
+
+ @{   <input type="button" value="Add Activity to Docket Item" onclick="location.href='@Url.Action("Add", "Activity", new { ModelId = Model.Id })'" /> //this add is reffering to the ADD controller in activity, not the view. 
     }
 
 <h2>@Model.Title</h2>
@@ -15,28 +16,21 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
-
 @using Newtonsoft.Json;
 @{
 
     var latList = new List<double>();
     var lngList = new List<double>();
-    foreach (var Activity in Model.Activities)
+    foreach (var Activities in Model.Activities)
     {
-      
-       
-            latList.Add(Activity.Lat);
-            lngList.Add(Activity.Lng);
-        
-
+        latList.Add(Activities.Lat);
+        lngList.Add(Activities.Lng);
     }
-
-
+    
 }
 <div id="map"></div>
 
 <script>
-
     var lats = @Html.Raw(JsonConvert.SerializeObject(latList, Formatting.Indented,
                             new JsonSerializerSettings
                             {
@@ -50,19 +44,14 @@
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 11,
-            center: { lat: 41.918767, lng: -87.68641}
+            center: { lat: 40, lng: -87.68641}
         });
 
 
         for (let i = 0; i < lats.length && i < lngs.length; i++) {
-
             let marker = new google.maps.Marker({ position: new google.maps.LatLng(lats[i], lngs[i]), map: map })
-
-        }
-
-    }
+        } }
 
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6CHq9jOA1p1l-8oORbFV9HJPptDezg2s&callback=initMap"
         async defer></script>

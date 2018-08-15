@@ -80,12 +80,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -197,43 +209,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\DocketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyExperiencesController.cs" />
+    <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806271938561_InitialModel.cs" />
-    <Compile Include="Migrations\201806271938561_InitialModel.Designer.cs">
-      <DependentUpon>201806271938561_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806281534123_Docket.cs" />
-    <Compile Include="Migrations\201806281534123_Docket.Designer.cs">
-      <DependentUpon>201806281534123_Docket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806281544469_ActivitiesLocation.cs" />
-    <Compile Include="Migrations\201806281544469_ActivitiesLocation.Designer.cs">
-      <DependentUpon>201806281544469_ActivitiesLocation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806281630016_Budget.cs" />
-    <Compile Include="Migrations\201806281630016_Budget.Designer.cs">
-      <DependentUpon>201806281630016_Budget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806281637104_AddInitialBudget.cs" />
-    <Compile Include="Migrations\201806281637104_AddInitialBudget.Designer.cs">
-      <DependentUpon>201806281637104_AddInitialBudget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807021611576_SeedDocket.cs" />
-    <Compile Include="Migrations\201807021611576_SeedDocket.Designer.cs">
-      <DependentUpon>201807021611576_SeedDocket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807021623464_SeedActivites.cs" />
-    <Compile Include="Migrations\201807021623464_SeedActivites.Designer.cs">
-      <DependentUpon>201807021623464_SeedActivites.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807022130349_SeedMoreDockets.cs" />
-    <Compile Include="Migrations\201807022130349_SeedMoreDockets.Designer.cs">
-      <DependentUpon>201807022130349_SeedMoreDockets.cs</DependentUpon>
+    <Compile Include="Migrations\201808151705302_Rebuild.cs" />
+    <Compile Include="Migrations\201808151705302_Rebuild.Designer.cs">
+      <DependentUpon>201808151705302_Rebuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -241,7 +228,10 @@
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Docket.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyExperiences.cs" />
+    <Compile Include="Models\Travel.cs" />
     <Compile Include="Models\Traveler.cs" />
     <Compile Include="Models\ViewModels\ActivityDocketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,6 +276,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\index.d.ts" />
+    <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
@@ -354,38 +345,34 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Docket\Add.cshtml" />
     <Content Include="Views\Activity\Add.cshtml" />
+    <Content Include="Views\Budgets\Create.cshtml" />
+    <Content Include="Views\Budgets\Delete.cshtml" />
+    <Content Include="Views\Budgets\Details.cshtml" />
+    <Content Include="Views\Budgets\Edit.cshtml" />
+    <Content Include="Views\Budgets\Index.cshtml" />
+    <Content Include="Views\Travel\Create.cshtml" />
+    <Content Include="Views\Travel\Delete.cshtml" />
+    <Content Include="Views\Travel\Details.cshtml" />
+    <Content Include="Views\Travel\Edit.cshtml" />
+    <Content Include="Views\Travel\Index.cshtml" />
+    <Content Include="Views\MyExperiences\Create.cshtml" />
+    <Content Include="Views\MyExperiences\Delete.cshtml" />
+    <Content Include="Views\MyExperiences\Details.cshtml" />
+    <Content Include="Views\MyExperiences\Edit.cshtml" />
+    <Content Include="Views\MyExperiences\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Images\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806271938561_InitialModel.resx">
-      <DependentUpon>201806271938561_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806281534123_Docket.resx">
-      <DependentUpon>201806281534123_Docket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806281544469_ActivitiesLocation.resx">
-      <DependentUpon>201806281544469_ActivitiesLocation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806281630016_Budget.resx">
-      <DependentUpon>201806281630016_Budget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806281637104_AddInitialBudget.resx">
-      <DependentUpon>201806281637104_AddInitialBudget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807021611576_SeedDocket.resx">
-      <DependentUpon>201807021611576_SeedDocket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807021623464_SeedActivites.resx">
-      <DependentUpon>201807021623464_SeedActivites.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807022130349_SeedMoreDockets.resx">
-      <DependentUpon>201807022130349_SeedMoreDockets.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808151705302_Rebuild.resx">
+      <DependentUpon>201808151705302_Rebuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

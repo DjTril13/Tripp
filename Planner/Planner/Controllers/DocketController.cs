@@ -6,12 +6,13 @@ using System.Web.Mvc;
 using Planner.Models;
 using System.Data.Entity;
 using Planner.Models.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace Planner.Controllers
 {
     public class DocketController : Controller
     {
-
+        
         private ApplicationDbContext _context;
 
         public DocketController()
@@ -23,12 +24,9 @@ namespace Planner.Controllers
         public ActionResult Details(int Id)
         {
             Docket Docket = _context.Docket
-          
              .Include(d => d.Activities)
              .Where(d => d.Id == Id)
              .SingleOrDefault();
-
-
             ViewBag.Title = "Activities List";
             return View(Docket);
         }
@@ -40,6 +38,8 @@ namespace Planner.Controllers
         public ActionResult Create(string Title)
         {
             Docket Docket = new Docket();
+            var userID = User.Identity.GetUserId();
+            Docket.UserId = userID;
             Docket.Title = Title;
             _context.Docket.Add(Docket);
             _context.SaveChanges();
